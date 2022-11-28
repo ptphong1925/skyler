@@ -1,0 +1,28 @@
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Year Published</th>
+            <th>ISBN</th>
+            <th>Price</th>
+            <th>Out of Print</th>
+            <th>Views</th>
+            <th>Supplier</th>
+            <th>Author</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @books.each do |book| %>
+        <tr>
+            <td><%= link_to book.title, book %></td>
+            <td><%= book.year_published %></td>
+            <td><%= book.isbn %></td>
+            <td><%= book.price %></td>
+            <td><%= book.out_of_print %></td>
+            <td><%= book.views %></td>
+            <td><%= book.supplier_id %></td>
+            <td><%= book.author_id %></td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>
