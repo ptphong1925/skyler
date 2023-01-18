@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="imgs">
+    <div>
+      <img src="https://www.shutterstock.com/image-photo/homemade-chocolate-truffle-candy-process-600w-1630939081.jpg" alt="Trulli" width="500" height="333">
+    </div>
+    <div>
+      <img src="https://www.shutterstock.com/image-photo/little-boy-cutting-vegetables-while-600w-772945393.jpg" alt="Trulli" width="500" height="333">
+    </div>
+    <div>
+      <img src="https://www.shutterstock.com/image-photo/rustic-bread-flour-sprinkled-white-600w-1054860182.jpg" alt="Trulli" width="500" height="333">
+    </div>
+    <!-- <div>
+      <img lazy-src="https://www.shutterstock.com/image-photo/whipped-egg-whites-cream-perfect-600w-1021126567.jpg" alt="Trulli" width="500" height="333">
+    </div>
+    <div>
+      <img lazy-src="https://www.shutterstock.com/image-photo/chef-hands-cooking-meat-steak-600w-1415930042.jpg" alt="Trulli" width="500" height="333">
+    </div>
+    <div>
+      <img lazy-src="https://www.shutterstock.com/image-photo/homemade-chocolate-truffle-candy-process-600w-1630939081.jpg" alt="Trulli" width="500" height="333">
+    </div>
+    <div>
+      <img lazy-src="https://www.shutterstock.com/image-photo/little-boy-cutting-vegetables-while-600w-772945393.jpg" alt="Trulli" width="500" height="333">
+    </div>
+    <div>
+      <img lazy-src="https://www.shutterstock.com/image-photo/rustic-bread-flour-sprinkled-white-600w-1054860182.jpg" alt="Trulli" width="500" height="333">
+    </div>
+    <div>
+      <img lazy-src="https://www.shutterstock.com/image-photo/whipped-egg-whites-cream-perfect-600w-1021126567.jpg" alt="Trulli" width="500" height="333">
+    </div>
+    <div>
+      <img lazy-src="https://www.shutterstock.com/image-photo/chef-hands-cooking-meat-steak-600w-1415930042.jpg" alt="Trulli" width="500" height="333">
+    </div> -->
+  </div>
+
+  
+  <script>
+
+
+    function load(img) {
+      if (img.hasAttribute('lazy-src')) {
+        const url = img.getAttribute('lazy-src')
+        img.setAttribute('src', url)
+        img.removeAttribute('lazy-src')
+      }
+    }
+
+    function ready() {
+      if ('IntersectionObserver' in window) {
+        var lazyImgs = document.querySelectorAll('[lazy-src]');
+
+        let observer = new IntersectionObserver((blocks) => {
+          blocks.forEach(block => {
+            if (block.isIntersecting) {
+              load(block.target)
+            }
+          })
+
+        });
+
+        lazyImgs.forEach(img => {
+          observer.observe(img)
+        });
+      } else {
+        //function DONT OK
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', ready)
+    var imgs = document.querySelector('#imgs')
+    var newDiv = document.createElement('div')
+    var newContent = "<p1> Skyler iu Ban </p>"
+    var newContent2 = "<div><p1> Skyler iu Ban NHIU </p></div>"
+    newDiv.innerHTML = newContent
+    imgs.appendChild(newDiv)
+    imgs.insertAdjacentHTML('beforeend', newContent2)
+    console.log(imgs.lastChild)
+
+    </script>
+  
+</body>
+</html>
